@@ -39,3 +39,9 @@ func Abs(x int) int {
     }
     return x
 }
+
+func RemoveIndex(s []string, index int) []string {
+    ret := make([]string, 0)
+    ret = append(ret, s[:index]...)
+    return append(ret, s[index+1:]...)
+}
