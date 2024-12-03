@@ -3,11 +3,11 @@ package utils
 import (
 	"bufio"
 	"os"
-    "strconv"
+	"strconv"
 )
 
 func ReadFile(fileName string) []string {
-    file, err := os.Open(fileName)
+	file, err := os.Open(fileName)
 	Check(err)
 	defer file.Close()
 
@@ -27,21 +27,21 @@ func Check(e error) {
 	}
 }
 
-func StringToInt(s string) int {
-    i, err := strconv.Atoi(s)
-    Check(err)
-    return i
+func Stoi(s string) int {
+	i, err := strconv.Atoi(s)
+	Check(err)
+	return i
 }
 
 func Abs(x int) int {
-    if x < 0 {
-        return -x
-    }
-    return x
+	if x < 0 {
+		return -x
+	}
+	return x
 }
 
 func RemoveIndex(s []string, index int) []string {
-    ret := make([]string, 0)
-    ret = append(ret, s[:index]...)
-    return append(ret, s[index+1:]...)
+	ret := make([]string, 0)
+	ret = append(ret, s[:index]...)
+	return append(ret, s[index+1:]...)
 }

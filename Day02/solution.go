@@ -7,9 +7,9 @@ import (
 )
 
 func isSafe(report []string, ascending bool, problemDampener bool) bool {
-    if checkSafety(report, ascending) {
-        return true
-    }
+	if checkSafety(report, ascending) {
+		return true
+	}
 	if problemDampener {
 		for i := 0; i < len(report); i++ {
 			modifiedReport := utils.RemoveIndex(report, i)
@@ -18,34 +18,34 @@ func isSafe(report []string, ascending bool, problemDampener bool) bool {
 			}
 		}
 	}
-    return false
+	return false
 }
 
 func checkSafety(report []string, ascending bool) bool {
-    oldLevel := utils.StringToInt(report[0])
-    for i := 1; i < len(report); i++ {
-        newLevel := utils.StringToInt(report[i])
-        delta := utils.Abs(newLevel - oldLevel)
-        if (ascending && newLevel < oldLevel) || (!ascending && newLevel > oldLevel) || delta > 3 || delta < 1 {
-            return false
-        }
-        oldLevel = newLevel
-    }
-    return true
+	oldLevel := utils.Stoi(report[0])
+	for i := 1; i < len(report); i++ {
+		newLevel := utils.Stoi(report[i])
+		delta := utils.Abs(newLevel - oldLevel)
+		if (ascending && newLevel < oldLevel) || (!ascending && newLevel > oldLevel) || delta > 3 || delta < 1 {
+			return false
+		}
+		oldLevel = newLevel
+	}
+	return true
 }
 
 func part1(report []string) int {
-    if isSafe(report, true, false) || isSafe(report, false, false) {
-        return 1
-    }
-    return 0
+	if isSafe(report, true, false) || isSafe(report, false, false) {
+		return 1
+	}
+	return 0
 }
 
 func part2(report []string) int {
-    if isSafe(report, true, true) || isSafe(report, false, true) {
-        return 1
-    }
-    return 0
+	if isSafe(report, true, true) || isSafe(report, false, true) {
+		return 1
+	}
+	return 0
 }
 
 func main() {
