@@ -20,6 +20,28 @@ func ReadFile(fileName string) []string {
 	return lines
 }
 
+func ReadFileWithEmptyLines(fileName string) ([]string, []string) {
+	file, err := os.Open(fileName)
+	Check(err)
+	defer file.Close()
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if line == "" {
+			break
+		}
+		lines = append(lines, line)
+	}
+	Check(scanner.Err())
+	var remainingLines []string
+	for scanner.Scan() {
+		remainingLines = append(remainingLines, scanner.Text())
+	}
+	Check(scanner.Err())
+	return lines, remainingLines
+}
+
 // Check panics if error is nil
 func Check(e error) {
 	if e != nil {
