@@ -112,3 +112,19 @@ func SliceStoi (s []string) []int {
 	}
 	return result
 }
+
+func IsCoordInsideMatrix(i int, j int, matrix [][]string) bool {
+	return i >= 0 && i < len(matrix) && j >= 0 && j < len(matrix[0])
+}
+
+func RemoveDuplicate[T comparable](sliceList []T) []T {
+    allKeys := make(map[T]bool)
+    list := []T{}
+    for _, item := range sliceList {
+        if _, value := allKeys[item]; !value {
+            allKeys[item] = true
+            list = append(list, item)
+        }
+    }
+    return list
+}
