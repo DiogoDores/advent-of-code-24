@@ -55,6 +55,10 @@ func Stoi(s string) int {
 	return i
 }
 
+func Itos(i int) string {
+	return strconv.Itoa(i)
+}
+
 func Abs(x int) int {
 	if x < 0 {
 		return -x
@@ -99,4 +103,12 @@ func ReverseString(str string) (result string) {
         result = string(v) + result 
     } 
     return
-} 
+}
+
+func SliceStoi (s []string) []int {
+	var result []int
+	for _, value := range s {
+		result = append(result, Stoi(value))
+	}
+	return result
+}
